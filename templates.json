@@ -6,7 +6,7 @@
     "note": "Deploys a Spark cluster running Spark 2.1 with Tensorflow and Keras enabled.",
     "categories": ["serverless"],
     "platform": "linux",
-    "logo": "http://135.248.178.121/XpCluster.png",
+    "logo": "https://github.com/dammeax/spark-cluster/raw/master/XpCluster.png",
     "env": [
     {
       "name": "instanceId",
@@ -39,7 +39,7 @@
     }
   ],
     "repository": {
-      "url": "http://135.248.178.121",
+      "url": "https://github.com/dammeax/spark-cluster",
       "stackfile": "docker-compose-spark-cluster-5.yml"
     }
   }
