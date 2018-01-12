@@ -1,0 +1,46 @@
+[
+  {
+    "type": "stack",
+    "title": "SparkCluster",
+    "description": "Spark cluster with Zeppelin Notebook editor",
+    "note": "Deploys a Spark cluster running Spark 2.1 with Tensorflow and Keras enabled.",
+    "categories": ["serverless"],
+    "platform": "linux",
+    "logo": "http://135.248.178.121/XpCluster.png",
+    "env": [
+    {
+      "name": "instanceId",
+      "label": "Cluster Id",
+      "description": "Cluster Instance id (1, 2, ...)."
+    },
+    {
+      "name": "sparkImage",
+      "set": "manager.localdomain:5000/spark:2.2.0-test1"
+    },
+    {
+      "name": "zeppelinImage",
+      "set": "manager.localdomain:5000/spark_zeppelin:2.2.0_0.7.3-test1"
+    },
+    {
+      "name": "sparkWorkerReplica",
+      "set": "1"
+    },
+    {
+      "name": "sparkWorkerCores",
+      "set": "12"
+    },
+    {
+      "name": "sparkWorkerMemory",
+      "set": "20g"
+    },
+    {
+      "name": "zeppelinMemory",
+      "set": "4g"
+    }
+  ],
+    "repository": {
+      "url": "http://135.248.178.121",
+      "stackfile": "docker-compose-spark-cluster-5.yml"
+    }
+  }
+]
