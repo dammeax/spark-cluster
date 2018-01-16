@@ -1,7 +1,7 @@
 version: "3"
 services:
 
-  spark-master-${instanceId}:
+  spark-master-${INSTANCE_ID}:
     image: manager.localdomain:5000/spark:2.2.0-test1
     hostname: spark-master-${INSTANCE_ID}
     command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master-${INSTANCE_ID}
@@ -35,7 +35,7 @@ services:
     volumes:
       - /mnt/data:/mnt/data
 
-  zeppelin-${instanceId}:
+  zeppelin-${INSTANCE_ID}:
     image: manager.localdomain:5000/spark_zeppelin:2.2.0_0.7.3-test1
     hostname: zeppelin-${INSTANCE_ID}
     ports :
