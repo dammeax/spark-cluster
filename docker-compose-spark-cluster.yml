@@ -1,10 +1,10 @@
 version: "3"
 services:
 
-  spark-master-${INSTANCE_ID}:
+  spark-master:
     image: manager.localdomain:5000/spark:2.2.0-test1
-    hostname: spark-master-${INSTANCE_ID}
-    command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master-${INSTANCE_ID}
+    hostname: spark-master
+    command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master
     environment:
       TZ: Europe/Brussels
     ports:
@@ -16,10 +16,10 @@ services:
         reservations:
           memory: 1G
 
-  spark-worker-${INSTANCE_ID}:
+  spark-worker:
     image: manager.localdomain:5000/spark:2.2.0-test1
-    hostname: spark-worker-${INSTANCE_ID}
-    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master-${INSTANCE_ID}:7077
+    hostname: spark-worker
+    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     environment:
       SPARK_WORKER_CORES: 12
       SPARK_WORKER_MEMORY: 20g
@@ -35,14 +35,14 @@ services:
     volumes:
       - /mnt/data:/mnt/data
 
-  zeppelin-${INSTANCE_ID}:
+  zeppelin:
     image: manager.localdomain:5000/spark_zeppelin:2.2.0_0.7.3-test1
-    hostname: zeppelin-${INSTANCE_ID}
+    hostname: zeppelin
     ports :
       - "${INSTANCE_ID}080:8080"
     environment:
       - SPARK_HOME=/opt/spark
-      - MASTER=spark://spark-master-${INSTANCE_ID}:7077
+      - MASTER=spark://spark-master:7077
       - ZEPPELIN_JAVA_OPTS=-Dspark.executor.memory=20g
       - ZEPPELIN_NOTEBOOK_DIR=/opt/NotebookRepo
       - HTTP_PROXY=http://proxy.lbs.alcatel-lucent.com:8000
