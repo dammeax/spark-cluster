@@ -2,7 +2,7 @@ version: "3"
 services:
 
   spark-master:
-    image: manager.localdomain:5000/spark:2.2.0-test1
+    image: docker pull dammeax/xpspark
     hostname: spark-master
     command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master
     environment:
@@ -17,7 +17,7 @@ services:
           memory: 1G
 
   spark-worker:
-    image: manager.localdomain:5000/spark:2.2.0-test1
+    image: docker pull dammeax/xpspark
     hostname: spark-worker
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     environment:
@@ -36,7 +36,7 @@ services:
       - /mnt/data:/mnt/data
 
   zeppelin:
-    image: manager.localdomain:5000/spark_zeppelin:2.2.0_0.7.3-test1
+    image: dammeax/xpZeppelin
     hostname: zeppelin
     ports :
       - "${INSTANCE_ID}080:8080"
