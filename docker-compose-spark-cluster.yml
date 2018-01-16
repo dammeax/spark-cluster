@@ -2,7 +2,7 @@ version: "3"
 services:
 
   spark-master:
-    image: docker pull dammeax/xpspark
+    image: dammeax/xpspark
     hostname: spark-master
     command: bin/spark-class org.apache.spark.deploy.master.Master -h spark-master
     environment:
@@ -17,7 +17,7 @@ services:
           memory: 1G
 
   spark-worker:
-    image: docker pull dammeax/xpspark
+    image: dammeax/xpspark
     hostname: spark-worker
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     environment:
@@ -36,7 +36,7 @@ services:
       - /mnt/data:/mnt/data
 
   zeppelin:
-    image: dammeax/xpZeppelin
+    image: dammeax/xpzeppelin
     hostname: zeppelin
     ports :
       - "${INSTANCE_ID}080:8080"
